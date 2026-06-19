@@ -34,7 +34,7 @@ We wanted to create a unique assessment process where it was the customer's own 
 
 The assessment process we developed would span five _intense_ workdays on-site at the customer, with all hands on deck. Some of the larger assessments we did had 120 participants in the first-day Value Stream Mapping workshop.
 
-We gameified the process with huge _rich pictures_ on the wall and we developed a deck of cards - one for each tile in the matrix - which we used in different workshop formats where the participants would score the cards by four different [gauges](/codememo/gauges/) and hereby identify both _"low hanging fruits"_ as well as _"blockers"_.
+We gameified the process with huge _rich pictures_ on the wall and we developed a deck of cards - one for each tile in the matrix - which we used in different workshop formats where the participants would score the cards by four different [gauges](/model/gauges/) and hereby identify both _"low hanging fruits"_ as well as _"blockers"_.
 
 The model framework would build a static website, but it had a unique feature that the `.pdf` to print the card deck from was automatically generated on-the-fly, so any last-minute changes, adaptions or customizations to the model could be implemented in matter op minutes.
 

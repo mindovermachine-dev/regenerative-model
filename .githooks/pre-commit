@@ -66,7 +66,8 @@ if [ "$RUN_MARKDOWNLINT" == "TRUE" ]; then
     printf "   ⏳ MarkDown Lint check\r"
     MARKDOWNLINT_OUT=$( markdownlint-cli2 2>&1)
 
-    if [ $? -eq 0 ]; then
+    if [ $? -eq 0 ]; thencpsell
+    
         echo "   ✅ MarkDown Lint check"
     else
         echo "   ❌ MarkDown Lint check"

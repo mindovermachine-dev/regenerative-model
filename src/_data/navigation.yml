@@ -1,11 +1,10 @@
-# cspell:ignore Codememo
 # main links
 main:
 
   # - title: "Table of Contents"
   #   url: /toc/
   - title: "Model"
-    url: /model/
+    url: /
   - title: "Stories"
     url: /stories/
 

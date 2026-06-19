@@ -52,7 +52,7 @@ namespace :proofer do
         %r{linkedin\.com},
         %r{twitter\.com},
         %r{instagram\.com},
-        %r{www\.mindovermachine\.dk}      ]
+        %r{model\.mindovermachine\.dk}      ]
     }
     
     HTMLProofer.check_directory('./_site', options).run

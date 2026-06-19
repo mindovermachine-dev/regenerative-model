@@ -68,7 +68,7 @@ jobs:
     with:
       target_branch: main #default is main
       user_name: "Ready Pusher" #required 
-      user_email: "ready-pusher@devopsdays.dk" # required
+      user_email: "ready-pusher@mindovermachine.dk" # required
 
   close_issue:
     needs: fast-forward-merge
@@ -78,6 +78,6 @@ jobs:
     uses: lakruzz/workflows/.github/workflows/close_issue.yml@experimental
     with:
       user_name: "Ready Pusher"
-      user_email: "ready-pusher@devopsdays.dk"
+      user_email: "ready-pusher@mindovermachine.dk"
       delete_issue_branch: true # default is true
       delete_ready_branch: true # default is true
