@@ -1,0 +1,6 @@
+client:
+  directory:  mom
+  name:       Mind over Machine
+  url:        https://model.mindovermachine.dk
+  logo:       /assets/images/mom-brain.png
+name:         Regenerative Software Model
