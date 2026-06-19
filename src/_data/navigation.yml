@@ -23,10 +23,10 @@ model:
         url: /
       - title: "Gauges"
         url: /model/gauges/
-      - title: "About the model"
-        url: /model/about-model/
-      - title: "The Full Assessment"
-        url: /stories/the-full-assessment/
+#      - title: "About the model"
+#        url: /model/about-model/
+#      - title: "The Full Assessment"
+#        url: /stories/the-full-assessment/
       - title: "Print Cards"
         url: /model/print/
 

@@ -189,7 +189,7 @@ A lean coffee workshop is a special workshop format that allows participants to 
 - A possible (maybe more) solution to mitigate it
 - The value each identified solution would yield to SDLC or product quality
 
-The findings are then recorded and presented as a detailed and customized note on each card - see card ["Automated Builds"](/model/cards/automated-builds/) as an example (these are real finding from some of the assessments, but anonymized and used here to serve as examples). Also notice on the ["Automated Builds"](/model/cards/automated-builds/) card, that the scoring from the workshop is captured. The score is 7 and [complexity is categorized](/model/gauges/) as _a group effort_.
+The findings are then recorded and presented as a detailed and customized note on each card - see card ["Carbon-Aware Run"](/model/cards/carbon-aware-run/) as an example (these are real finding from some of the assessments, but anonymized and used here to serve as examples). Also notice on the ["Carbon-Aware Run"](/model/cards/carbon-aware-run/) card, that the scoring from the workshop is captured. The score is 7 and [complexity is categorized](/model/gauges/) as _a group effort_.
 
 ## The report
 

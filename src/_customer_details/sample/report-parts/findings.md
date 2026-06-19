@@ -6,7 +6,7 @@ web-report: true
 published:  true
 ---
 
-The findings and recommendations have mainly been picked up throughout the interviews and workshops. We conducted this part as targeted group interviews focusing on the 6 main areas of the metric model.
+The findings and recommendations have mainly been picked up throughout the interviews and workshops. We conducted this part as targeted group interviews focusing on the 4 main areas of the regenerative software model.
 
 On the first day, after the initial Continuous Delivery presentation, we had an exercise where all attendees together were asked to illustrate the process from the point where a requirement or a change request arrives until the implemented result can be accessed by the end-users.
 
@@ -16,26 +16,18 @@ The result was discussed during the workshop and then used as a reference point 
 
 <!--TODO: add a picture from the workshop -->
 
-## {% include func/get-area-title.html   area="build" %}
+## {% include func/get-area-title.html   area="ecological" %}
 
-{% include report/get-area-findings.html area="build" %}
+{% include report/get-area-findings.html area="ecological" %}
 
-## {% include func/get-area-title.html   area="qa" %}
+## {% include func/get-area-title.html   area="opensource" %}
 
-{% include report/get-area-findings.html area="qa" %}
+{% include report/get-area-findings.html area="opensource" %}
 
-## {% include func/get-area-title.html   area="vcs" %}
+## {% include func/get-area-title.html   area="wellbeing" %}
 
-{% include report/get-area-findings.html area="vcs" %}
+{% include report/get-area-findings.html area="wellbeing" %}
 
-## {% include func/get-area-title.html   area="devops" %}
+## {% include func/get-area-title.html   area="evolution" %}
 
-{% include report/get-area-findings.html area="devops" %}
-
-## {% include func/get-area-title.html   area="arch" %}
-
-{% include report/get-area-findings.html area="arch" %}
-
-## {% include func/get-area-title.html   area="org" %}
-
-{% include report/get-area-findings.html area="org" %}
+{% include report/get-area-findings.html area="evolution" %}

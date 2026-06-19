@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+    {
+      "path": "../../localhome/GitHub/lakruzz/docs.mindovermachine",
+    },
+  ],
+  "settings": {
+    "chat.tools.terminal.autoApprove": {
+      "bundle": true,
+      ".githooks/pre-commit": true,
+    },
+  },
+}
