@@ -44,19 +44,19 @@ masthead_title           : # overrides the website title displayed in the masthe
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # "giscus" # false (default)
+  provider               :  "giscus" # false (default)
   ## https://giscus.app/ 
   giscus:
-    repo                  : "lakruzz/giscussions"
-    repo_id               : "R_kgDOPNVyKw"
-    category              : "lakruzz.com"
-    category_id           : "DIC_kwDOPNVyK84CtA9_"
+    repo                  : "mindovermachine-dev/regenerative-model"
+    repo_id               : "R_kgDOS-Eaaw"
+    category              : "model.mindovermachine.dk"
+    category_id           : "DIC_kwDOS-Eaa84C_yKI"
     mapping               : "pathname"
     strict                : "0"
     reactions_enabled     : "1"
     emit_metadata         : "0"
-    input_position        : "top"
-    theme                 : "catppuccin_latte"
+    input_position        : "bottom"
+    theme                 : "catppuccin_latte" # "light"
     lang                  : "en"
     loading               : "lazy"
 
@@ -335,7 +335,7 @@ defaults:
       layout: model-card-single
       author_profile: # true
       read_time: # true
-      comments: # true
+      comments: true # true
       share: # true
       related: # true
       search: true # true

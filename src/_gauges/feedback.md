@@ -8,7 +8,7 @@ Continuous attention to your surroundings will provide you with the means for yo
 
 Feedback can be in the form of logs, data, graphs, statistics, analysis, discussions with customers or colleagues - Anything that gives your surroundings a voice.
 
-If your Continuous Delivery ecosystem or your application isn't _talking_ to you, then you're trying to move forward while blindfolded, in the dark.
+If your regenerative ecosystem or your application isn't _talking_ to you, then you're trying to move forward while blindfolded, in the dark.
 
 Give your surroundings a voice.
 

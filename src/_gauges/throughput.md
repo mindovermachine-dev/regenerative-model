@@ -4,12 +4,11 @@ caption:    The speed of the pipeline
 weight:     10
 ---
 
-An interesting measure to focus on is simply speed or throughput.
-The time it takes from a developer proudly shouting "It works on my computer!" to it actually working on the end user's computer.
+An interesting measure to focus on is _lead time_ throughput simply. The _lead time_ is defined as the time it takes from someone shouts "I have an idea!" and until that ide then manifests itself as an actually working feature in the hands of the intended end-user.
 
 For each card ask yourself the following question:
 
-> To what extent would implementing this feature or ability improve the overall throughput of my pipeline?
+> To what extent would implementing this feature or ability improve the lead time and the overall throughput of my pipeline?
 
 The feedback is measured from one to three stars. Use the stars as follows:
 
