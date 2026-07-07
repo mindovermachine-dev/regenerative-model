@@ -1,5 +1,5 @@
 ---
-title:   File a Great Issue
+title:   File an Issue
 caption: Help maintainers help you — stop writing lazy tickets
 level:   30
 area:    opensource
