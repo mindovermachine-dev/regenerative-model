@@ -1,0 +1,108 @@
+---
+title: Self-Assessment
+permalink: /model/assessment/
+sidebar:
+  nav: "model"
+---
+
+<style>
+  #assessment-form {
+    background-color: transparent;
+  }
+
+  #assessment-form label {
+    display: inline;
+    margin-right: 1.5em;
+    margin-bottom: 0;
+  }
+
+  #assessment-form label input[type="radio"] {
+    display: inline !important;
+    width: auto !important;
+    margin: 0 0.5em 0 0 !important;
+    vertical-align: middle;
+  }
+</style>
+
+<div class="page-assessment">
+  <h2>How regenerative is your organization?</h2>
+  <p>
+    Rate your organization on each practice. Be honest — this is a baseline, not
+    a test.
+  </p>
+
+  <form id="assessment-form">
+    {% assign a_sorted = site.areas | sort:'weight' | reverse %} 
+    {% assign caption_map = "carbon-aware-run: Run heavy jobs when renewable energy is available|circular-code: Optimize code to work on older devices|data-minimization-first: Regularly delete unnecessary data|measure-before-you-cut: Measure energy usage before optimizing|turn-off-the-lights: Reduce unnecessary data transmission|hexagonal-separation: Design code to be independent of frameworks|isolate-your-domain: Keep business logic separate from databases|living-systems: Design code to be maintained and updated over time|strangler-upgrades: Upgrade systems gradually instead of all at once|the-clean-slate: Maintain consistent code formatting standards|active-sponsorship: Financially support open-source projects you depend on|cite-your-sources: Know what dependencies are in your project|ecosystem-gardening: Invest in supporting developers you rely on|file-a-great-issue: Write clear, helpful bug reports|the-upstream-tax: Contribute improvements back to original projects|async-by-default: Use written communication instead of meetings when possible|define-the-boundaries: Set clear work-life boundaries to prevent burnout|no-heroics-allowed: Fix processes instead of relying on heroic efforts|psychological-safety: Blame systems instead of individuals|rhythmic-flow: Balance workload to match team capacity" | split: "|" | map: "split:&#58;" %}
+    {% for area in a_sorted %}
+    <section class="area">
+      <h3>{{ area.title }}</h3>
+      {% assign area_cards = site.cards | where:"area", area.slug %} {% for card
+      in area_cards %}
+      <article class="question">
+        <h4><a href="{{ card.url }}">{{ card.title }}</a></h4>
+        <p>
+          {% assign simple_caption = "" %}
+          {% for caption_pair in caption_map %}
+            {% assign pair = caption_pair | split: ":" %}
+            {% if pair[0] == card.slug %}
+              {% assign simple_caption = pair[1] %}
+            {% endif %}
+          {% endfor %}
+          {% if simple_caption != "" %}{{ simple_caption }}{% else %}{{ card.caption }}{% endif %}
+        </p>
+        <div class="rating">
+          <label
+            ><input type="radio" name="{{ card.slug }}" value="0" /> Not doing
+            this</label
+          >
+          <label
+            ><input type="radio" name="{{ card.slug }}" value="1" /> Aware of
+            it</label
+          >
+          <label
+            ><input type="radio" name="{{ card.slug }}" value="2" /> Practicing
+            it</label
+          >
+          <label
+            ><input type="radio" name="{{ card.slug }}" value="3" /> Leading
+            with it</label
+          >
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    {% endfor %}
+    <button type="button" onclick="calculateScore()">See my score</button>
+  </form>
+
+  <div id="results" style="display: none">
+    <h2>Your Results</h2>
+    <div id="scores"></div>
+  </div>
+</div>
+
+<script>
+  function calculateScore() {
+    const form = document.getElementById("assessment-form");
+    const inputs = form.querySelectorAll("input[type=radio]:checked");
+    let total = 0;
+    let max = 0;
+    inputs.forEach((input) => {
+      total += parseInt(input.value);
+      max += 3;
+    });
+    const percent = max > 0 ? Math.round((total / max) * 100) : 0;
+    document.getElementById("scores").innerHTML =
+      "<p>Your regenerative score: <strong>" +
+      percent +
+      "%</strong></p>" +
+      "<p>(" +
+      total +
+      " out of " +
+      max +
+      " possible points)</p>";
+    document.getElementById("results").style.display = "block";
+    document.getElementById("results").scrollIntoView();
+  }
+</script>
