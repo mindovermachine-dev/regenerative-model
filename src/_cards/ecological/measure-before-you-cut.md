@@ -5,6 +5,17 @@ level:   30
 area:    ecological
 header:
   teaser: /assets/images/cards/codememo.png
+assessment:
+  - id: measure_before_cut_1
+    question: To what degree do we measure the impact of a change before removing anything?
+    focus: Evidence first
+    praise: You are avoiding waste by grounding decisions in measurement.
+    remedy: Capture one baseline metric before making a change and compare it after the rollout.
+  - id: measure_before_cut_2
+    question: To what degree do we use data to challenge assumptions about efficiency?
+    focus: Assumption testing
+    praise: You are creating a habit of learning rather than guessing.
+    remedy: Pick one proposed simplification and test it against current usage data before cutting it.
 ---
 
 As a beginner, you start noticing situational variables in runtime environments. Instead of guessing where computational bottlenecks exist, use green profiling tools (such as Kepler, Scaphandre, or browser-based CPU profilers) to collect real-world energy data.

@@ -5,6 +5,17 @@ level:   50
 area:    ecological
 header:
   teaser: /assets/images/cards/codememo.png
+assessment:
+  - id: carbon_aware_run_1
+    question: To what degree do we align our compute workloads with the carbon intensity of our energy sources?
+    focus: Carbon-aware scheduling
+    praise: You are making sustainability visible in everyday delivery choices.
+    remedy: Start by shifting one recurring workload to a lower-carbon window and track the impact.
+  - id: carbon_aware_run_2
+    question: To what degree do we use measurements to guide our energy decisions?
+    focus: Measured impact
+    praise: You are turning environmental intent into evidence-based practice.
+    remedy: Add a simple dashboard for your biggest energy-intensive jobs and review it weekly.
 ---
 
 A competent developer chooses a deliberate goal: optimizing runtime operations against carbon grid volatility. Programmatically delay or relocate energy-intensive batch processing, CI/CD pipeline builds, and intensive database migrations to times and geographic regions where carbon intensity is at its lowest.
