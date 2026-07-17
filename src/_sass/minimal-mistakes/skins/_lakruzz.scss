@@ -170,7 +170,7 @@ $active-color: mix(#fff, $primary-color, 80%) !default;
   
     &:hover {
       color: $link-color-hover;
-      text-shadow: $text-color 0px 0px 2px;
+      text-shadow: none;
       text-decoration-line: none;
     }
   }
