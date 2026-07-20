@@ -52,6 +52,7 @@ namespace :proofer do
         %r{linkedin\.com},
         %r{twitter\.com},
         %r{instagram\.com},
+        %r{github\.com/signup},
         %r{model\.mindovermachine\.dk},      
         %r{slack\.mindovermachine\.dk}
       ]

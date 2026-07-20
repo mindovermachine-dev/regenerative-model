@@ -22,6 +22,19 @@ sidebar:
     margin: 0 0.5em 0 0 !important;
     vertical-align: middle;
   }
+
+  #assessment-form .question-item {
+    margin-bottom: 1.25em;
+  }
+
+  #assessment-form .question-item .focus {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+
+  #assessment-form .question-item .prompt {
+    margin-bottom: 0.5em;
+  }
 </style>
 
 <div class="page-assessment">
@@ -31,68 +44,107 @@ sidebar:
     a test.
   </p>
 
-  <form id="assessment-form">
-    {% assign a_sorted = site.areas | sort:'weight' | reverse %} 
-    {% assign caption_map = "carbon-aware-run: Run heavy jobs when renewable energy is available|circular-code: Optimize code to work on older devices|data-minimization-first: Regularly delete unnecessary data|measure-before-you-cut: Measure energy usage before optimizing|turn-off-the-lights: Reduce unnecessary data transmission|hexagonal-separation: Design code to be independent of frameworks|isolate-your-domain: Keep business logic separate from databases|living-systems: Design code to be maintained and updated over time|strangler-upgrades: Upgrade systems gradually instead of all at once|the-clean-slate: Maintain consistent code formatting standards|active-sponsorship: Financially support open-source projects you depend on|cite-your-sources: Know what dependencies are in your project|ecosystem-gardening: Invest in supporting developers you rely on|file-a-great-issue: Write clear, helpful bug reports|the-upstream-tax: Contribute improvements back to original projects|async-by-default: Use written communication instead of meetings when possible|define-the-boundaries: Set clear work-life boundaries to prevent burnout|no-heroics-allowed: Fix processes instead of relying on heroic efforts|psychological-safety: Blame systems instead of individuals|rhythmic-flow: Balance workload to match team capacity" | split: "|" | map: "split:&#58;" %}
+  <form id="assessment-form" onsubmit="handleSubmit(event)">
+    {% assign a_sorted = site.areas | sort:'weight' | reverse %}
     {% for area in a_sorted %}
     <section class="area">
       <h3>{{ area.title }}</h3>
-      {% assign area_cards = site.cards | where:"area", area.slug %} {% for card
-      in area_cards %}
+      {% assign area_cards = site.cards | where:"area", area.slug %}
+      {% for card in area_cards %}
       <article class="question">
         <h4><a href="{{ card.url }}">{{ card.title }}</a></h4>
-        <p>
-          {% assign simple_caption = "" %}
-          {% for caption_pair in caption_map %}
-            {% assign pair = caption_pair | split: ":" %}
-            {% if pair[0] == card.slug %}
-              {% assign simple_caption = pair[1] %}
-            {% endif %}
+        {% if card.assessment and card.assessment.size > 0 %}
+          {% for item in card.assessment %}
+          <div class="question-item">
+            <p class="focus">{{ item.focus }}</p>
+            <p class="prompt">{{ item.question }}</p>
+            <div class="rating">
+              <label>
+                <input type="radio" name="{{ card.slug }}-{{ forloop.index }}" value="1" />
+                Strongly Disagree
+              </label>
+              <label>
+                <input type="radio" name="{{ card.slug }}-{{ forloop.index }}" value="2" />
+                Disagree
+              </label>
+              <label>
+                <input type="radio" name="{{ card.slug }}-{{ forloop.index }}" value="3" />
+                Neutral
+              </label>
+              <label>
+                <input type="radio" name="{{ card.slug }}-{{ forloop.index }}" value="4" />
+                Agree
+              </label>
+              <label>
+                <input type="radio" name="{{ card.slug }}-{{ forloop.index }}" value="5" />
+                Strongly Agree
+              </label>
+            </div>
+          </div>
           {% endfor %}
-          {% if simple_caption != "" %}{{ simple_caption }}{% else %}{{ card.caption }}{% endif %}
-        </p>
-        <div class="rating">
-          <label
-            ><input type="radio" name="{{ card.slug }}" value="0" /> Not doing
-            this</label
-          >
-          <label
-            ><input type="radio" name="{{ card.slug }}" value="1" /> Aware of
-            it</label
-          >
-          <label
-            ><input type="radio" name="{{ card.slug }}" value="2" /> Practicing
-            it</label
-          >
-          <label
-            ><input type="radio" name="{{ card.slug }}" value="3" /> Leading
-            with it</label
-          >
-        </div>
+        {% else %}
+          <p>{{ card.caption }}</p>
+          <div class="rating">
+            <label>
+              <input type="radio" name="{{ card.slug }}" value="1" />
+              Strongly Disagree
+            </label>
+            <label>
+              <input type="radio" name="{{ card.slug }}" value="2" />
+              Disagree
+            </label>
+            <label>
+              <input type="radio" name="{{ card.slug }}" value="3" />
+              Neutral
+            </label>
+            <label>
+              <input type="radio" name="{{ card.slug }}" value="4" />
+              Agree
+            </label>
+            <label>
+              <input type="radio" name="{{ card.slug }}" value="5" />
+              Strongly Agree
+            </label>
+          </div>
+        {% endif %}
       </article>
       {% endfor %}
     </section>
     {% endfor %}
     <button type="button" onclick="calculateScore()">See my score</button>
+    <button type="submit">Save and view report</button>
   </form>
 
   <div id="results" style="display: none">
     <h2>Your Results</h2>
     <div id="scores"></div>
+    <p><a href="/model/report/" class="button">View full report</a></p>
   </div>
 </div>
 
 <script>
-  function calculateScore() {
+  function getSelectedValues() {
     const form = document.getElementById("assessment-form");
-    const inputs = form.querySelectorAll("input[type=radio]:checked");
-    let total = 0;
-    let max = 0;
-    inputs.forEach((input) => {
-      total += parseInt(input.value);
-      max += 3;
-    });
+    return Array.from(form.querySelectorAll("input[type=radio]:checked")).map((input) => ({
+      name: input.name,
+      value: parseInt(input.value, 10)
+    }));
+  }
+
+  function calculateScore() {
+    const selectedValues = getSelectedValues();
+    const total = selectedValues.reduce((sum, item) => sum + item.value, 0);
+    const max = selectedValues.length * 5;
     const percent = max > 0 ? Math.round((total / max) * 100) : 0;
+
+    localStorage.setItem('assessment_score', percent);
+    localStorage.clear();
+    document.querySelectorAll('input[type=radio]:checked').forEach((input) => {
+      localStorage.setItem(input.name, input.value);
+    });
+    localStorage.setItem('assessment_complete', 'true');
+    localStorage.setItem('assessment_score', String(percent));
+
     document.getElementById("scores").innerHTML =
       "<p>Your regenerative score: <strong>" +
       percent +
@@ -104,5 +156,24 @@ sidebar:
       " possible points)</p>";
     document.getElementById("results").style.display = "block";
     document.getElementById("results").scrollIntoView();
+  }
+
+  function saveAssessmentScoresToStorage() {
+    if (typeof window === "undefined" || !window.localStorage) {
+      return {};
+    }
+
+    localStorage.clear();
+    document.querySelectorAll('input[type=radio]:checked').forEach((input) => {
+      localStorage.setItem(input.name, input.value);
+    });
+    localStorage.setItem('assessment_complete', 'true');
+    return {};
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    saveAssessmentScoresToStorage();
+    window.location.href = "/model/report/";
   }
 </script>
