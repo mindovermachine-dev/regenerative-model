@@ -35,6 +35,13 @@ sidebar:
   #assessment-form .question-item .prompt {
     margin-bottom: 0.5em;
   }
+<<<<<<< HEAD
+=======
+
+  #assessment-form .question h4 a {
+    box-shadow: none !important;
+  }
+>>>>>>> e1a09bb (Build questionnaire with 5-point Likert scale from card frontmatter #11 - #11)
 </style>
 
 <div class="page-assessment">
@@ -44,7 +51,11 @@ sidebar:
     a test.
   </p>
 
+<<<<<<< HEAD
   <form id="assessment-form" onsubmit="handleSubmit(event)">
+=======
+  <form id="assessment-form">
+>>>>>>> e1a09bb (Build questionnaire with 5-point Likert scale from card frontmatter #11 - #11)
     {% assign a_sorted = site.areas | sort:'weight' | reverse %}
     {% for area in a_sorted %}
     <section class="area">
@@ -53,8 +64,14 @@ sidebar:
       {% for card in area_cards %}
       <article class="question">
         <h4><a href="{{ card.url }}">{{ card.title }}</a></h4>
+<<<<<<< HEAD
         {% if card.assessment and card.assessment.size > 0 %}
           {% for item in card.assessment %}
+=======
+        {% assign assessment_items = card.assessment %}
+        {% if assessment_items and assessment_items.size > 0 %}
+          {% for item in assessment_items %}
+>>>>>>> e1a09bb (Build questionnaire with 5-point Likert scale from card frontmatter #11 - #11)
           <div class="question-item">
             <p class="focus">{{ item.focus }}</p>
             <p class="prompt">{{ item.question }}</p>
@@ -125,6 +142,7 @@ sidebar:
 <script>
   function getSelectedValues() {
     const form = document.getElementById("assessment-form");
+<<<<<<< HEAD
     return Array.from(form.querySelectorAll("input[type=radio]:checked")).map((input) => ({
       name: input.name,
       value: parseInt(input.value, 10)
@@ -135,6 +153,19 @@ sidebar:
     const selectedValues = getSelectedValues();
     const total = selectedValues.reduce((sum, item) => sum + item.value, 0);
     const max = selectedValues.length * 5;
+=======
+    const questionItems = form.querySelectorAll(".question-item");
+    let total = 0;
+    let max = questionItems.length * 5;
+
+    questionItems.forEach((item) => {
+      const selected = item.querySelector("input[type=radio]:checked");
+      if (selected) {
+        total += parseInt(selected.value, 10);
+      }
+    });
+
+>>>>>>> e1a09bb (Build questionnaire with 5-point Likert scale from card frontmatter #11 - #11)
     const percent = max > 0 ? Math.round((total / max) * 100) : 0;
 
     localStorage.setItem('assessment_score', percent);
