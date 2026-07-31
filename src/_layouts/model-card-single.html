@@ -67,6 +67,20 @@ layout: single
     {{ content }}
   </div>
 
+  {% if page.assessment and page.assessment.size > 0 %}
+  <section class="assessment-questions">
+    <h3>You might ask yourself:</h3>
+    <ul>
+      {% for item in page.assessment %}
+        {% if item.question %}
+          <li>{{ item.question }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <p>Want to assess your full organization? <a href="/model/assessment/">Take the full assessment</a></p>
+  </section>
+  {% endif %}
+
   {% include /func/get-snippets-by-path.html path=page.path %}
 
 
